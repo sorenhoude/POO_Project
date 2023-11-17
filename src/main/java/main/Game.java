@@ -96,6 +96,15 @@ public class Game {
        // this.text.setBounds(300, 400, 300, 100);
         this.textPanel.add(this.text);
         container.add(this.textPanel);
+        
+        this.text.addActionListener((e)-> getName());
+        //String name = this.text.getText();
+        //this.mainTextArea.append("\n" + "Welcome" + name);
+    }
+    
+    public void getName(){
+        String name = this.text.getText();
+        this.mainTextArea.append("\n" + "Welcome " + name + "!");
     }
     
 }
