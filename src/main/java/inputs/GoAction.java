@@ -16,7 +16,13 @@ public class GoAction implements Action{
     }
     
     public void doAction(String noun){
-        
+        /*
+        SI la pièce actuelle va vers String piece, alors
+        getNum (room = noun)
+        hero.numRoom = setNumRoom();
+        dialogue de la room dont on vient d'entrer;
+        */
+        System.out.println("ACTION = GO IS WORKING");
     }
     
 }

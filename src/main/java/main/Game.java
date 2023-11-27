@@ -21,6 +21,8 @@ import javax.swing.JTextField;
  */
 public class Game {
     
+    /*
+    
     private JFrame window;
     private Container container;
     private JPanel titleNamePanel, startButtonPanel, mainTextPanel, textPanel;
@@ -106,5 +108,7 @@ public class Game {
         String name = this.text.getText();
         this.mainTextArea.append("\n" + "Welcome " + name + "!");
     }
+    
+    */
     
 }

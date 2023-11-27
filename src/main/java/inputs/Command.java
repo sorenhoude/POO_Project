@@ -23,11 +23,6 @@ public class Command {
     SleepAction sleep = new SleepAction();
     SaveAction save = new SaveAction();
     
-   /* private final static List<Action> ALL_ACTIONS = new ArrayList<>();
-    static {
-        ALL_ACTIONS.add(new GoAction()); 
-    }*/
-    
     public void doCommand(String verb, String noun1, String noun2){
         switch(verb){
             case "go":

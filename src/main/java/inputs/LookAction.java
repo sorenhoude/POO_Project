@@ -16,7 +16,7 @@ public class LookAction implements Action{
     }
     
     public void doAction(String noun){
-        
+        System.out.println("ACTION = LOOK IS WORKING");
     }
     
     //voir pour regarder plusieurs choses à la fois.

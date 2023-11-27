@@ -16,6 +16,8 @@ public class AttackAction implements Action{
     }
     
     public void doAction(String noun){
-        
+        //si il y a un *noun* dans la pièce et qu'il est en vie,
+        //on fait attack() dans Hero
+        System.out.println("ACTION = ATTACK IS WORKING");
     }
 }

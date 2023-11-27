@@ -18,7 +18,7 @@ public class UserInput {
     
     Command c = new Command();
     
-    List<String> commands = new ArrayList<>(Arrays.asList(
+    List<String> verbs = new ArrayList<>(Arrays.asList(
             "go", "help", "quit", "look", "take", "use",
             "attack", "buy", "read", "talk", "sleep", "save"));
     
@@ -35,31 +35,33 @@ public class UserInput {
         return "Hello" + name + "!";
     }
 
-    public void ParseCommand(List <String> wordlist){
+    public void parseCommand(List <String> wordlist){
         String verb = wordlist.get(0);
-        String noun1 = wordlist.get(1);
-        String noun2 = "";
-        // List<String> commands = new ArrayList<>(Arrays.asList("take", "drop"));
-        //List<String> objects = new ArrayList<>(Arrays.asList("sword", "potion"));
-        //List<String> objects2 = new ArrayList<>(Arrays.asList("arrow"));
+        String noun1 = (wordlist.size() > 1) ? wordlist.get(1) : "";
+        String noun2 = (wordlist.size() > 2) ? wordlist.get(2) : "";
+        
         if(wordlist.size() > 3){
-            System.out.println("Only 3 word commands allowed!");
+            System.out.println("That's way too many words...");
+            return;
         } 
-        else if(!commands.contains(verb)){
-            System.out.println(verb + "isn't a known verb!");
+        
+        if(!verbs.contains(verb)){
+            System.out.println(verb + " isn't a usable command!");
+            return;
         }
-        else if(!objects.contains(noun1)){
-            System.out.println(noun1 + "isn't a known noun!");
+        
+        if(wordlist.size() > 1 && !objects.contains(noun1)){
+            System.out.println(noun1 + " isn't a known noun!");
+            return;
         }
-        else if (!wordlist.get(2).equals("")){
-            noun2 = wordlist.get(2);
-            if(!secondObject.contains(noun2)){
-            System.out.println(noun2 + "isn't a known noun!");
-            }
+        
+        if(wordlist.size() > 2 && !secondObject.contains(noun2)){
+            System.out.println(noun2 + " isn't a known noun!");
+            return;
         }
-        else {
-            c.doCommand(verb, noun1, noun2);
-        }
+        
+        c.doCommand(verb, noun1, noun2);
+        
     }
     
     //retourne une liste des mots que l'utilisateur a tapé
@@ -79,23 +81,10 @@ public class UserInput {
         List<String> wordlist;
         String lowstr = input.trim().toLowerCase();
         if(lowstr.equals("")){
-            System.out.println("You must return a command");
+            System.out.println("You must return a command!");
         } else{
             wordlist = wordList(lowstr);
-            ParseCommand(wordlist);
+            parseCommand(wordlist);
         }
     }
-    
-    /*
-    public void monMain(){
-        String input, output;
-        //faire l'affichage de la zone ou l'utilisateur doit écrire
-        do{
-            Scanner sc = new Scanner(System.in);
-            input = sc.nextLine();
-            runCommand(input);
-        } while (!"quit".equals(input));
-    }
-    */
-    
 }
