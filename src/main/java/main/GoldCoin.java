@@ -9,10 +9,12 @@ package main;
  * @author grand
  */
 public class GoldCoin extends Item {
+    protected final static int OBJECT_TYPE = 4;
     
     public GoldCoin(){
         this.weight = 1;
         this.name = "Gold coin";
         this.description = "Having gold is always a pleasure.";
+        this.objectType = OBJECT_TYPE;
     }
 }

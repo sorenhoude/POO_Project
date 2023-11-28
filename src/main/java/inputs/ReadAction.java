@@ -4,6 +4,12 @@
  */
 package inputs;
 
+import main.Clue;
+import main.Hero;
+import main.Inventory;
+import main.Item;
+import main.Manor;
+
 /**
  *
  * @author grand
@@ -11,12 +17,15 @@ package inputs;
 public class ReadAction implements Action{
 
     @Override
-    public void doAction() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    public void doAction(String noun){
-        
+    public void doAction(Manor manor, String noun){
+        //System.out.println("ACTION = READ IS WORKING");
+        Hero hero = manor.getHero();
+        Inventory heroInventory = hero.getInventory();
+        Item object = heroInventory.findItemByName(noun);
+        if(object != null && object instanceof Clue){
+            String s = object.getDescription();
+            System.out.println(s);
+        }
     }
     
 }

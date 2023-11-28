@@ -4,13 +4,14 @@
  */
 package inputs;
 
+import main.Manor;
+
 /**
  *
  * @author grand
  */
 public class HelpAction implements Action{
 
-    @Override
     public void doAction() {
         System.out.println("Here is the list of all the commands you can use: ");
         System.out.println("attack *enemy* : allow yous to attack someone you encounter.");
@@ -25,6 +26,11 @@ public class HelpAction implements Action{
         System.out.println("talk *character* : allows you to engage in a conversation with a character.");
         System.out.println("use *item* : allows you to .");
         System.out.println("use *item1* *item2* : .");
+    }
+
+    @Override
+    public void doAction(Manor manor, String noun) {
+        
     }
     
 }

@@ -8,13 +8,19 @@ package main;
  *
  * @author grand
  */
-public abstract class Weapon extends Item {
+public class Weapon extends Item {
     protected int damage;
     protected int ammo;
     protected final int AMMO_MAX = 1;
+    protected final static int OBJECT_TYPE = 1;
     
-    public Weapon() {
+    public Weapon(int damage, int weight, String name, String description){
         this.ammo = AMMO_MAX;
+        this.objectType = OBJECT_TYPE;
+        this.damage = damage;
+        this.weight = weight;
+        this.name = name;
+        this.description = description;
     }
 
     public void reload(){

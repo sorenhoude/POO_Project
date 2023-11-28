@@ -14,8 +14,15 @@ import java.util.Map;
  * @author grand
  */
 public class Room extends Thing {
+    private int number;
     private Map<String, Exit> exits;
     private List<Character> charactersRoom;
+    private Inventory inventoryRoom;
+    private static final int INVENTORY_MAW_WEIGHT = 5;
+    
+    public int getNumber(){
+        return this.number;
+    }
 
     public Map<String, Exit> getExits(){
         return exits;
@@ -24,12 +31,35 @@ public class Room extends Thing {
     public List<Character> getCharactersRoom(){
         return charactersRoom;
     }
+    
+    public Inventory getInventoryRoom(){
+        return inventoryRoom;
+    }
+    
+    public Character findCharacterByName(String characterName){
+        for (Character character : charactersRoom) {
+            if (character.getName().equals(characterName)) {
+                return character; // Character found
+            }
+        }
+        return null; // Character not found
+    } 
 
-    public Room(String name, String description){
+    public void setCharacterRoom(int i, Character character){
+        charactersRoom.add(i, character);
+    }
+
+    public void setInventoryRoom(Item item){
+        inventoryRoom.addItem(item);
+    }
+
+    public Room(String name, String description, int numberRoom){
         this.name = name;
         this.description = description;
+        this.number = number;
         this.exits = new HashMap<>();
-        this.charactersRoom = new ArrayList<Character>();
+        this.charactersRoom = new ArrayList<>();
+        this.inventoryRoom = new Inventory(INVENTORY_MAW_WEIGHT);
     }
 
     public void printListcharactersRoom(){

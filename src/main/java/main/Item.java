@@ -10,15 +10,9 @@ package main;
  */
 public abstract class Item extends Thing{
     protected int weight;
+    public int objectType;
     //protected ItemType type; (?) pas utile
     //protected String itemName;
     //protected String description; extends Thing donc pas besoin
 
-    public String getName(){
-        return this.name;
-    }
-    
-    public String getDescription(){
-        return this.description;
-    }
 }

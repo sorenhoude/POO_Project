@@ -4,6 +4,9 @@
  */
 package inputs;
 
+import main.Hero;
+import main.Manor;
+
 /**
  *
  * @author grand
@@ -11,18 +14,16 @@ package inputs;
 public class GoAction implements Action{
 
     @Override
-    public void doAction() {
-        
-    }
-    
-    public void doAction(String noun){
+    public void doAction(Manor manor, String noun){
         /*
         SI la pièce actuelle va vers String piece, alors
         getNum (room = noun)
         hero.numRoom = setNumRoom();
         dialogue de la room dont on vient d'entrer;
         */
-        System.out.println("ACTION = GO IS WORKING");
+        //System.out.println("ACTION = GO IS WORKING");
+        Hero hero = manor.getHero();
+        
     }
     
 }

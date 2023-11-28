@@ -8,7 +8,7 @@ package main;
  *
  * @author grand
  */
-public class Hostile extends Thing implements Character{
+public class Hostile extends Character{
     
     public Hostile(String name, String description){
         this.name = name;

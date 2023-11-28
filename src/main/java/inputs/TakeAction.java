@@ -4,18 +4,26 @@
  */
 package inputs;
 
+import main.Hero;
+import main.Inventory;
+import main.Item;
+import main.Manor;
+
 /**
  *
  * @author grand
  */
 public class TakeAction implements Action{
 
-    @Override
-    public void doAction() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    public void doAction(String noun){
-        
+     @Override
+    public void doAction(Manor manor, String noun){
+        if(isInTheRoom(noun)){
+            Inventory heroInventory = hero.getInventory();
+            Inventory roomInventory = hero.getInventory();
+            Item object = roomInventory.findItemByName(noun);
+            heroInventory.addItem(object);
+        } else{
+            System.out.println("You can't take " + noun + ". It isn't in the room.");
+        }
     }
 }

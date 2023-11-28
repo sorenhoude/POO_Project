@@ -15,6 +15,7 @@ public class Hero extends Thing {
     private int hp;
     private int damage;
     private int goldCount;
+    private int roomNumber;
     private Inventory inventory;
     private Weapon weaponInHand;
     //private static final Hero THE_HERO = new Hero("Bob"); // Singleton (?)
@@ -28,21 +29,17 @@ public class Hero extends Thing {
         this.goldCount = 0;
     }
 
-    // Use a static method to get the singleton instance
-    public static Hero getTheHero() {
-        return THE_HERO;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public Inventory getInventory() {
-        return inventory;
+        return this.inventory;
+    }
+    
+    //ajout Gabrielle
+    public void setInventoryHero(Item item){
+        inventory.addItem(item);
     }
     
     public boolean handEmpty(){
@@ -84,14 +81,40 @@ public class Hero extends Thing {
             this.damage= this.weaponInHand.damage;
         }
     }
-
+/*
     public void AttackBadGuy(Hostile badguy){
             badguy.setHp(badguy.getHp() - this.damage);
             this.hp -= badguy.getDamage();
     }
-    
+ */   
     public void dropItem(){
         this.weaponInHand = null;
+    }
+    
+    
+    
+    
+    
+    public void isHealed(){
+        this.hp = MAX_HP;
+        System.out.println("You regained full life.");
+        showHP();
+    }
+    
+    public void showHP(){
+        System.out.println("You have " + hp + " HP.");
+    }
+    
+    public boolean isInTheRoom(String noun){
+        int num = 
+    }
+    
+    public Room getCurrentRoom(){
+        return 
+    }
+    
+    public int getRoomNumber(){
+        return this.roomNumber;
     }
     
 }

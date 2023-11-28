@@ -4,15 +4,21 @@
  */
 package inputs;
 
+import main.Manor;
+
 /**
  *
  * @author grand
  */
 public class QuitAction implements Action{
 
-    @Override
     public void doAction() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.exit(0);
+    }
+
+    @Override
+    public void doAction(Manor manor, String noun) {
+        
     }
     
 }

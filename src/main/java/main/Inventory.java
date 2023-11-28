@@ -23,6 +23,11 @@ public class Inventory {
         this.weight = 0;
     }*/
     
+    //ajout Gabrielle
+    public List<Item> getItems(){
+        return items;
+    }
+    
     public Inventory(int maxWeight){
         this.maxWeight = maxWeight;
         this.items = new ArrayList<>();
@@ -33,6 +38,14 @@ public class Inventory {
         this.maxWeight = maxWeight;
         this.items = items;
         this.weight = weight;
+    }
+    
+    //ajout Gabrielle
+    public void printIventory(){
+        System.out.println("There are " + this.items.size() + " items.");
+        for(Item n : this.items){
+            System.out.println(n);
+        }
     }
 
     public Boolean isItemInList(Item item){
@@ -62,7 +75,7 @@ public class Inventory {
         } 
     }
     
-    public Object findItem(Item searchedItem){
+    public Item findItem(Item searchedItem){
         for (Item item : items) {
             if (item.equals(searchedItem)) {
                 return item; // Item found

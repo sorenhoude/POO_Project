@@ -16,4 +16,8 @@ public class HealingPotion extends Potion {
         this.description = "Heals the user completely.";
     }
     
+    public void isUsed(){
+        
+    }
+    
 }

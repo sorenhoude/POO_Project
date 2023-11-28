@@ -4,18 +4,16 @@
  */
 package inputs;
 
+import main.Manor;
+
 /**
  *
  * @author grand
  */
 public class BuyAction implements Action{
-
-    @Override
-    public void doAction() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
-    public void doAction(String noun){
+    @Override
+    public void doAction(Manor manor, String noun){
         
     }
     

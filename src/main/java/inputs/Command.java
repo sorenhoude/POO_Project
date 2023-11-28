@@ -4,6 +4,8 @@
  */
 package inputs;
 
+import main.Manor;
+
 /**
  *
  * @author grand
@@ -22,11 +24,12 @@ public class Command {
     TalkAction talk = new TalkAction();
     SleepAction sleep = new SleepAction();
     SaveAction save = new SaveAction();
+    DropAction drop = new DropAction();
     
-    public void doCommand(String verb, String noun1, String noun2){
+    public void doCommand(Manor manor, String verb, String noun1, String noun2){
         switch(verb){
             case "go":
-                go.doAction(noun1);
+                go.doAction(manor, noun1);
                 //go_cmd(noun1);
                 break;
             case "help":
@@ -36,50 +39,45 @@ public class Command {
                 quit.doAction();
                 break;
             case "look":
-                look.doAction(noun1);;
+                if(!noun2.equals("")){
+                    look.doAction(manor, noun1);
+                } else if(!noun2.equals("") && !noun1.equals("")){
+                    look.doAction(manor);
+                } else{
+                    look.doAction(manor, noun1, noun2);
+                }
+                look.doAction(manor, noun1);
                 break;
             case "take":
-                take.doAction(noun1);
+                take.doAction(manor, noun1);
                 break;
             case "use":
                 if(!noun2.equals("")){
-                    use.doAction(noun1, noun2);
+                    use.doAction(manor, noun1, noun2);
                 } else{
-                    use.doAction(noun1);
+                    use.doAction(manor, noun1);
                 }
                 break;
             case "attack":
-                attack.doAction(noun1);
+                attack.doAction(manor, noun1);
                 break;
             case "buy":
-                buy.doAction(noun1);
+                buy.doAction(manor, noun1);
                 break;
             case "read":
-                read.doAction(noun1);;
+                read.doAction(manor, noun1);;
                 break;
             case "talk":
-                talk.doAction(noun1);
+                talk.doAction(manor, noun1);
                 break;
             case "sleep":
-                sleep.doAction();
+                sleep.doAction(manor);
                 break;
             case "save":
                 save.doAction();
+            case "drop":
+                drop.doAction(manor, noun1);
                 break;
         }
     }
-    
-    /*
-    List<String> commands = new ArrayList<>(Arrays.asList(
-            "go", "help", "quit", "look", "take", "use",
-            "attack", "buy", "read", "talk", "sleep", "save"));
-    
-     List<String> objects = new ArrayList<>(Arrays.asList(
-            "sword", "mirror"));
-     
-     List<String> second_object = new ArrayList<>(Arrays.asList(
-            "arrow"));
-    */
-     
-    
 }

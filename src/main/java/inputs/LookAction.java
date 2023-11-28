@@ -4,21 +4,33 @@
  */
 package inputs;
 
+import main.Item;
+import main.Manor;
+
 /**
  *
  * @author grand
  */
 public class LookAction implements Action{
-
+    
     @Override
-    public void doAction() {
-        System.out.println();
+    public void doAction(Manor manor, String noun){
+        //System.out.println("ACTION = LOOK IS WORKING");
+        if(isInTheRoom(noun)){
+            Item object = roomInventory.findItemByName(noun);
+            String s = object.getDescription();
+            System.out.println(s);
+        } else{
+            System.out.println(noun + " isn't in the room..");
+        }
     }
     
-    public void doAction(String noun){
-        System.out.println("ACTION = LOOK IS WORKING");
+    public void doAction(Manor manor, String noun, String noun2){
+        
     }
     
-    //voir pour regarder plusieurs choses à la fois.
+    public void doAction(Manor manor){
+        
+    }
     
 }

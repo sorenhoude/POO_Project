@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import main.Manor;
 
 /**
  *
@@ -20,7 +21,7 @@ public class UserInput {
     
     List<String> verbs = new ArrayList<>(Arrays.asList(
             "go", "help", "quit", "look", "take", "use",
-            "attack", "buy", "read", "talk", "sleep", "save"));
+            "attack", "buy", "read", "talk", "sleep", "save", "drop"));
     
      List<String> objects = new ArrayList<>(Arrays.asList(
             "sword", "mirror"));
@@ -35,7 +36,7 @@ public class UserInput {
         return "Hello" + name + "!";
     }
 
-    public void parseCommand(List <String> wordlist){
+    public void parseCommand(List <String> wordlist, Manor manor){
         String verb = wordlist.get(0);
         String noun1 = (wordlist.size() > 1) ? wordlist.get(1) : "";
         String noun2 = (wordlist.size() > 2) ? wordlist.get(2) : "";
@@ -60,7 +61,7 @@ public class UserInput {
             return;
         }
         
-        c.doCommand(verb, noun1, noun2);
+        c.doCommand(manor, verb, noun1, noun2);
         
     }
     
@@ -77,14 +78,14 @@ public class UserInput {
         return strlist;
     }
     
-    public void runCommand(String input){
+    public void runCommand(String input, Manor manor){
         List<String> wordlist;
         String lowstr = input.trim().toLowerCase();
         if(lowstr.equals("")){
             System.out.println("You must return a command!");
         } else{
             wordlist = wordList(lowstr);
-            parseCommand(wordlist);
+            parseCommand(wordlist, manor);
         }
     }
 }

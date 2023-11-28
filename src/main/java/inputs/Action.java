@@ -4,12 +4,14 @@
  */
 package inputs;
 
+import main.Manor;
+
 /**
  *
  * @author grand
  */
 public interface Action {
     
-    public abstract void doAction();
+    public abstract void doAction(Manor manor, String noun);
     
 }

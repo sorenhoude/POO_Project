@@ -8,13 +8,15 @@ package main;
  *
  * @author grand
  */
-public abstract class Potion extends Item{
-    private final int POTION_WEIGHT = 3;
-    protected final static int OBJECT_TYPE = 2;
+public class Clue extends Item {
+    private final int CLUE_WEIGHT = 2;
+    protected final static int OBJECT_TYPE = 3;
 
-    public Potion() {
+    public Clue(String name, String description) {
         super();
-        this.weight = POTION_WEIGHT;
+        this.weight = CLUE_WEIGHT;
+        this.name = name;
+        this.description = description;
         this.objectType = OBJECT_TYPE;
     }
     
