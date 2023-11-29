@@ -14,14 +14,14 @@ import java.util.Map;
  * @author grand
  */
 public class Room extends Thing {
-    private int number;
+    private int numberRoom;
     private Map<String, Exit> exits;
     private List<Character> charactersRoom;
     private Inventory inventoryRoom;
     private static final int INVENTORY_MAW_WEIGHT = 5;
     
-    public int getNumber(){
-        return this.number;
+    public int getNumberRoom(){
+        return this.numberRoom;
     }
 
     public Map<String, Exit> getExits(){
@@ -56,7 +56,7 @@ public class Room extends Thing {
     public Room(String name, String description, int numberRoom){
         this.name = name;
         this.description = description;
-        this.number = number;
+        this.numberRoom = numberRoom;
         this.exits = new HashMap<>();
         this.charactersRoom = new ArrayList<>();
         this.inventoryRoom = new Inventory(INVENTORY_MAW_WEIGHT);
