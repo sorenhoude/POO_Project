@@ -8,7 +8,6 @@ import main.Hero;
 import main.Inventory;
 import main.Item;
 import main.MagicalChest;
-import static main.Hero.getTheHero;
 import static main.MagicalChest.getTheMagicalChest;
 import main.Manor;
 

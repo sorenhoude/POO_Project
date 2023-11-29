@@ -6,6 +6,7 @@ package inputs;
 
 import main.Hero;
 import main.Manor;
+import main.Room;
 
 /**
  *
@@ -23,7 +24,17 @@ public class GoAction implements Action{
         */
         //System.out.println("ACTION = GO IS WORKING");
         Hero hero = manor.getHero();
-        
+        int numRoom = hero.getRoomNumber();
+        Room currentRoom = manor.findRoomByNumber(numRoom);
+        if(currentRoom.hasAnExit(noun)){
+            Room nextRoom = manor.findRoomByName(noun);
+            int numNextRoom = nextRoom.getNumber();
+            hero.setRoomNumber(numNextRoom);
+            String s = nextRoom.getDescription();
+            System.out.println(s);
+        } else{
+            System.out.println("You can't access the " + noun + " from there.");
+        }
     }
     
 }

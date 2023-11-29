@@ -5,6 +5,8 @@
 package inputs;
 
 import main.Hero;
+import main.Inventory;
+import main.Item;
 import main.Manor;
 
 /**
@@ -14,10 +16,12 @@ import main.Manor;
 public class SleepAction implements Action{
 
     public void doAction(Manor manor) {
-        Hero hero = manor.getHero();
         //si il n'est pas dans la pièce du lit, non
         //sinon, afficher 2 phrases s'endort/se réveille + les hp sont au max = méthode hpMax dans le hero  (+ sauvegarde)
-        if(isInTheRoom(bed)){
+        Hero hero = manor.getHero();
+        Inventory heroInventory = hero.getInventory();
+        Item object = heroInventory.findItemByName("Bed");
+        if(object != null){
             System.out.println("After a few hours of dreamless slumber, you've waken up. You're fully rested.");
             hero.isHealed();
         } else{

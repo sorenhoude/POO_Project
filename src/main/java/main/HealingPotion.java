@@ -16,6 +16,13 @@ public class HealingPotion extends Potion {
         this.description = "Heals the user completely.";
     }
     
+    public HealingPotion(int price) {
+        super();
+        this.name = "Healing Potion";
+        this.description = "Heals the user completely.";
+        this.price = price;
+    }
+    
     public void isUsed(){
         
     }

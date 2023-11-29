@@ -22,6 +22,16 @@ public class Weapon extends Item {
         this.name = name;
         this.description = description;
     }
+    
+    public Weapon(int damage, int weight, String name, String description, int price){
+        this.ammo = AMMO_MAX;
+        this.objectType = OBJECT_TYPE;
+        this.damage = damage;
+        this.weight = weight;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
 
     public void reload(){
         this.ammo = AMMO_MAX;

@@ -20,7 +20,7 @@ public class Hero extends Thing {
     private Weapon weaponInHand;
     //private static final Hero THE_HERO = new Hero("Bob"); // Singleton (?)
 
-    private Hero(String name) {
+    public Hero(String name) {
         this.name = name;
         this.description = "You are the hero of your own adventure.";
         this.hp = MAX_HP;
@@ -51,48 +51,66 @@ public class Hero extends Thing {
         this.inventory.removeItem(item);
     }
 
-    public void pay(int cost){
-        this.goldCount -= cost;
-    }
-    public void takeDamage(int damage){
+    public void takeDamage(int damage){   //est ce utile?
         if (this.hp > damage){
             this.hp -= damage;
-        }else System.out.println("You died.");
+        } else {
+            System.out.println("You died.");
+        }
 
     }
 
     public void putWeaponInHand(Weapon weapon){
         if (handEmpty()){
-            this.weaponInHand= weapon;
-        }else System.out.println("You already have an item in hand.");
+            this.weaponInHand = weapon;
+            updateDamage();
+        }else {
+            System.out.println("You already have an item in hand.");
+        }
     }
     public void putWeaponInHandInInventory(){
         if (!handEmpty()){
             inventory.addItem(weaponInHand);
-            this.weaponInHand=null;
+            this.weaponInHand = null;
         }
     }
     public void putWeaponFromBagToHand(Weapon weapon){
             putWeaponInHand(weapon);
-            inventory.removeItem(weapon);
+            inventory.removeItem(weapon);   // pourquoi?
+            updateDamage();
     }
     public void updateDamage(){
         if (!handEmpty()){
-            this.damage= this.weaponInHand.damage;
+            this.damage = this.weaponInHand.damage;
         }
     }
-/*
-    public void AttackBadGuy(Hostile badguy){
-            badguy.setHp(badguy.getHp() - this.damage);
-            this.hp -= badguy.getDamage();
+
+    public void attack(Hostile badguy){
+        while(this.isAlive() || badguy.isAlive()){
+            badguy.setHpHostile(badguy.getHpHostile() - this.damage);
+            this.hp -= badguy.getDamageHostile();                    //pb : les hp peuvent descendre en dessous de 0
+        }
+        if(this.isAlive()){
+            System.out.println("You have slained your enemies.");
+        } else{
+            System.out.println("You've perished. GAME OVER");
+            System.exit(0);
+        }
     }
- */   
+   
     public void dropItem(){
         this.weaponInHand = null;
     }
     
+    public boolean isAlive(){
+        return hp > 0;
+    }
     
     
+    public void isStronger(){
+        this.damage = this.damage * 2;
+        System.out.println("You became a lot stronger.");
+    }
     
     
     public void isHealed(){
@@ -105,16 +123,27 @@ public class Hero extends Thing {
         System.out.println("You have " + hp + " HP.");
     }
     
-    public boolean isInTheRoom(String noun){
-        int num = 
-    }
-    
-    public Room getCurrentRoom(){
-        return 
-    }
-    
     public int getRoomNumber(){
         return this.roomNumber;
     }
     
+    public void setRoomNumber(int num){
+        this.roomNumber = num;
+    }
+    
+    public boolean buyStuff(Item item){
+        int price = item.getPrice();
+        if(price > goldCount){
+            System.out.println("It looks like you can't afford that.");
+        }else{
+            this.goldCount -= price;
+            this.inventory.addItem(item);
+            return true;
+        }
+        return false;
+    }
+    
+    public void addCoins(int coins){
+        this.goldCount += coins;
+    }
 }

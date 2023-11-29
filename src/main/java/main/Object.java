@@ -17,4 +17,12 @@ public class Object extends Item {
         this.name = name;
         this.description = description;
     }
+    
+    public Object(String name, int weight, String description, int price){
+        this.weight = weight;
+        this.objectType = OBJECT_TYPE;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
 }

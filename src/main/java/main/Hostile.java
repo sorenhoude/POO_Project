@@ -10,9 +10,24 @@ package main;
  */
 public class Hostile extends Character{
     
-    public Hostile(String name, String description){
+    private int hpHostile;
+    private int damageHostile;
+    
+    public int getHpHostile(){
+        return hpHostile;
+    }
+    public int getDamageHostile(){
+        return damageHostile;
+    }
+    public void setHpHostile(int damage){
+        this.hpHostile -= damage;
+    }
+    
+    public Hostile(String name, String description, int hpHostile, int damageHostile){
         this.name = name;
         this.description = description;
+        this.hpHostile = hpHostile;
+        this.damageHostile = damageHostile;
     }
 
     @Override
@@ -20,9 +35,9 @@ public class Hostile extends Character{
         String s = name + "\n" + description;
         return s;
     }
-
-    public void attack(){
-        
+    
+    public boolean isAlive(){
+        return hpHostile > 0;
     }
     
 }

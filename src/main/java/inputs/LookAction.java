@@ -4,8 +4,11 @@
  */
 package inputs;
 
+import main.Hero;
+import main.Inventory;
 import main.Item;
 import main.Manor;
+import main.Room;
 
 /**
  *
@@ -16,9 +19,13 @@ public class LookAction implements Action{
     @Override
     public void doAction(Manor manor, String noun){
         //System.out.println("ACTION = LOOK IS WORKING");
-        if(isInTheRoom(noun)){
-            Item object = roomInventory.findItemByName(noun);
-            String s = object.getDescription();
+        Hero hero = manor.getHero();
+        int numRoom = hero.getRoomNumber();
+        Room currentRoom = manor.findRoomByNumber(numRoom);
+        Inventory inventoryRoom = currentRoom.getInventoryRoom();
+        Item item = inventoryRoom.findItemByName(noun);
+        if(item != null){
+            String s = item.getDescription();
             System.out.println(s);
         } else{
             System.out.println(noun + " isn't in the room..");
@@ -26,11 +33,16 @@ public class LookAction implements Action{
     }
     
     public void doAction(Manor manor, String noun, String noun2){
-        
+        doAction(manor, noun);
+        doAction(manor, noun2);
     }
     
     public void doAction(Manor manor){
-        
+        Hero hero = manor.getHero();
+        int numRoom = hero.getRoomNumber();
+        Room currentRoom = manor.findRoomByNumber(numRoom);
+        String s = currentRoom.getDescription();
+        System.out.println(s);
     }
     
 }

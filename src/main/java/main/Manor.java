@@ -86,7 +86,14 @@ public class Manor {
         return null; // Retourne null si la chambre n'est pas trouvée
     }
     
-    
+    public Room findRoomByName(String roomName) {
+        for (Room room : rooms) {
+            if (room.getName().equals(roomName)) {
+                return room;
+            }
+        }
+        return null; // Retourne null si la chambre n'est pas trouvée
+    }
     
     
     

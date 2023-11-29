@@ -25,6 +25,8 @@ public class ReadAction implements Action{
         if(object != null && object instanceof Clue){
             String s = object.getDescription();
             System.out.println(s);
+        } else{
+            System.out.println("You can't read that.");
         }
     }
     

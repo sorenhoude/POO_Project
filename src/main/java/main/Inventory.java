@@ -66,13 +66,15 @@ public class Inventory {
         items.remove(item);
     }
     
-    public void addItem(Item item){
+    public boolean addItem(Item item){
         if ((weight+item.weight) < maxWeight){
             items.add(item);
+            return true;
         } else {
             System.out.println("Maximal weight reached : you can't add any more items!");
             System.out.println("You should try the command *drop something* to make room for something else.");
         } 
+        return false;
     }
     
     public Item findItem(Item searchedItem){

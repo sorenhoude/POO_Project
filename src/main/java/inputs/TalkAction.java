@@ -5,7 +5,9 @@
 package inputs;
 
 import main.Hero;
-import main.Inventory;
+import main.Character;
+import main.Friendly;
+import main.Hostile;
 import main.Manor;
 import main.Room;
 
@@ -21,13 +23,10 @@ public class TalkAction implements Action{
         Hero hero = manor.getHero();
         int numRoom = hero.getRoomNumber();
         Room currentRoom = manor.findRoomByNumber(numRoom);
-        if(isInTheRoom(currentRoom)){
-            //Inventory roomInventory = room.getInventory();
-            Character char = room.findCharacterByName(noun);
-            if(char != null){
-                String s = char.getDialogue();
-                System.out.println(s);
-            }
+        Character character = currentRoom.findCharacterByName(noun);
+        if(character != null){
+            String s = character.getDialogue();
+            System.out.println(s);
         } else{
             System.out.println(noun + " isn't in the room..");
         }

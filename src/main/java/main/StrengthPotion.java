@@ -16,4 +16,11 @@ public class StrengthPotion extends Potion {
         this.description = "Multiplies the damage of the hero by 2.";
     }
     
+    public StrengthPotion(int price) {
+        super();
+        this.name = "Strength Potion";
+        this.description = "Multiplies the damage of the hero by 2.";
+        this.price = price;
+    }
+    
 }

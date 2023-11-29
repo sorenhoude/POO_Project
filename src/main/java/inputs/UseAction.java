@@ -6,7 +6,6 @@ package inputs;
 
 import main.HealingPotion;
 import main.Hero;
-import static main.Hero.getTheHero;
 import main.Inventory;
 import main.Item;
 import main.Manor;
@@ -26,11 +25,15 @@ public class UseAction implements Action{
         if(object != null){
             if(object instanceof Weapon){
                 hero.putWeaponFromBagToHand((Weapon) object);
-            } else if(object.objectType == 2){
+            } else if(object.getObjectType() == 2){
                 if(object instanceof HealingPotion){
-                    
+                    System.out.println("The potion has been used.");
+                    hero.isHealed();
+                    heroInventory.removeItem(object);
                 } else{
-                    
+                    System.out.println("The potion has been used.");
+                    hero.isHealed();
+                    heroInventory.removeItem(object);
                 }
             }else {  
                 System.out.println("You can't use that object.");       
