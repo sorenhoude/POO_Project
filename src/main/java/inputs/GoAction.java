@@ -28,7 +28,7 @@ public class GoAction implements Action{
         Room currentRoom = manor.findRoomByNumber(numRoom);
         if(currentRoom.hasAnExit(noun)){
             Room nextRoom = manor.findRoomByName(noun);
-            int numNextRoom = nextRoom.getNumber();
+            int numNextRoom = nextRoom.getNumberRoom();
             hero.setRoomNumber(numNextRoom);
             String s = nextRoom.getDescription();
             System.out.println(s);
