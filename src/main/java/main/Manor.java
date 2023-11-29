@@ -79,7 +79,7 @@ public class Manor {
     
     public Room findRoomByNumber(int roomNumber) {
         for (Room room : rooms) {
-            if (room.getNumber() == roomNumber) {
+            if (room.getNumberRoom() == roomNumber) {
                 return room;
             }
         }
