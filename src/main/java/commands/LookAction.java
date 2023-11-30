@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package inputs;
+package commands;
 
 import main.Hero;
 import main.Inventory;
@@ -44,5 +44,4 @@ public class LookAction implements Action{
         String s = currentRoom.getDescription();
         System.out.println(s);
     }
-    
 }

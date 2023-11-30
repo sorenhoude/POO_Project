@@ -4,6 +4,8 @@
  */
 package main;
 
+import java.util.Scanner;
+
 /**
  *
  * @author grand
@@ -22,10 +24,12 @@ public class ExitWithCode extends Exit {
         this.code = code;
     }
 
-    @Override
-    public String toString(){
-        String s = "The exit is locked -> " + getLockStatus() + "\nThe exit is open -> " + getIsOpen();
-        return s;
+    public int getCode(){
+        System.out.println("Enter door code : ");
+        Scanner s = new Scanner(System.in);
+        int input = s.nextInt();
+        s.close();
+        return input;
     }
 
     public void unlock(int code){
@@ -33,7 +37,7 @@ public class ExitWithCode extends Exit {
             this.lockStatus = false;
         }
     }
-
+    
     @Override
     public void open(){
         if(! this.lockStatus){

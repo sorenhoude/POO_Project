@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package inputs;
+package commands;
 
 import main.Hero;
 import main.Manor;
@@ -18,8 +18,6 @@ public class AttackAction implements Action{
 
     @Override
     public void doAction(Manor manor, String noun){
-        //si il y a un *noun* dans la pièce et qu'il est en vie et qu'il est hostile,
-        //on fait attack() dans Hero
         // System.out.println("ACTION = ATTACK IS WORKING");
         Hero hero = manor.getHero();
         int numRoom = hero.getRoomNumber();

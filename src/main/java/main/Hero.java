@@ -11,14 +11,12 @@ package main;
 public class Hero extends Thing {
     
     private static final int MAX_HP = 50;
-    //private String name;  //pas besoin, déja dans thing + mettre une description
     private int hp;
     private int damage;
     private int goldCount;
     private int roomNumber;
     private Inventory inventory;
     private Weapon weaponInHand;
-    //private static final Hero THE_HERO = new Hero("Bob"); // Singleton (?)
 
     public Hero(String name) {
         this.name = name;
@@ -147,3 +145,4 @@ public class Hero extends Thing {
         this.goldCount += coins;
     }
 }
+

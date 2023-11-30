@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package inputs;
+package commands;
 
 import main.Hero;
 import main.Manor;
@@ -10,6 +10,7 @@ import main.Room;
 import main.Character;
 import main.Inventory;
 import main.Item;
+import main.Merchant;
 
 /**
  *
@@ -17,14 +18,14 @@ import main.Item;
  */
 public class BuyAction implements Action{
     
-    @Override
+        @Override
     public void doAction(Manor manor, String noun){
         Hero hero = manor.getHero();
         int numRoom = hero.getRoomNumber();
         Room currentRoom = manor.findRoomByNumber(numRoom);
          Character character = currentRoom.findCharacterByName("Rich Business-man");
         if(character != null){
-            Inventory merchantInventory = character.getInventoryCharacter();
+            Inventory merchantInventory = ((Merchant) character).getInventoryMarchant();
             Item item = merchantInventory.findItemByName(noun);
             if(item != null){
                 if(hero.buyStuff(item)){
@@ -37,5 +38,4 @@ public class BuyAction implements Action{
             System.out.println("The merchant isn't in this room.");
         }
     }
-    
 }

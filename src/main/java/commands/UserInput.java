@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package inputs;
+package commands;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class UserInput {
     
     List<String> verbs = new ArrayList<>(Arrays.asList(
             "go", "help", "quit", "look", "take", "use",
-            "attack", "buy", "read", "talk", "sleep", "save", "drop"));
+            "attack", "buy", "read", "talk", "sleep", "drop"));
     
      List<String> objects = new ArrayList<>(Arrays.asList(
             "sword", "mirror"));

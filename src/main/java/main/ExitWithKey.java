@@ -10,7 +10,7 @@ package main;
  */
 public class ExitWithKey extends Exit{
     
-    private boolean lockStatus;
+    protected boolean lockStatus;
 
     public boolean getLockStatus(){
         return this.lockStatus;
@@ -21,14 +21,8 @@ public class ExitWithKey extends Exit{
         this.lockStatus = true;
     }
 
-    @Override
-    public String toString(){
-        String s =  "The exit is locked -> " + getLockStatus() + "\nThe exit is open -> " + getIsOpen();
-        return s;
-    }
-
-    public void unlock(){
-
+    public void unlock(Key key){
+        this.lockStatus = false;
     }
 
     @Override
@@ -37,5 +31,4 @@ public class ExitWithKey extends Exit{
             super.open();
         }
     }
-    
 }

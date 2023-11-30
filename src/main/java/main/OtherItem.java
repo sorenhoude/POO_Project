@@ -8,17 +8,17 @@ package main;
  *
  * @author grand
  */
-public class Object extends Item {
+public class OtherItem extends Item {
     protected final static int OBJECT_TYPE = 5;
     
-    public Object(String name, int weight, String description){
+    public OtherItem(String name, int weight, String description){
         this.weight = weight;
         this.objectType = OBJECT_TYPE;
         this.name = name;
         this.description = description;
     }
     
-    public Object(String name, int weight, String description, int price){
+    public OtherItem(String name, int weight, String description, int price){
         this.weight = weight;
         this.objectType = OBJECT_TYPE;
         this.name = name;

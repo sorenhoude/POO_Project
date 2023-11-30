@@ -22,9 +22,4 @@ public class HealingPotion extends Potion {
         this.description = "Heals the user completely.";
         this.price = price;
     }
-    
-    public void isUsed(){
-        
-    }
-    
 }

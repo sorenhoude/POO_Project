@@ -23,21 +23,15 @@ public class Hostile extends Character{
         this.hpHostile -= damage;
     }
     
-    public Hostile(String name, String description, int hpHostile, int damageHostile){
+    public Hostile(String name, String description, String dialogue, int hpHostile, int damageHostile){
         this.name = name;
         this.description = description;
+        this.dialogue = dialogue;
         this.hpHostile = hpHostile;
         this.damageHostile = damageHostile;
-    }
-
-    @Override
-    public String toString(){
-        String s = name + "\n" + description;
-        return s;
     }
     
     public boolean isAlive(){
         return hpHostile > 0;
     }
-    
 }

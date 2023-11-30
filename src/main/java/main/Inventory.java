@@ -16,14 +16,6 @@ public class Inventory {
     private List<Item> items;
     private int weight;
     
-    /* pas utile pour l'instant
-    public Inventory(){
-        this.maxWeight = 30;
-        this.items = new ArrayList<>();
-        this.weight = 0;
-    }*/
-    
-    //ajout Gabrielle
     public List<Item> getItems(){
         return items;
     }
@@ -40,16 +32,24 @@ public class Inventory {
         this.weight = weight;
     }
     
-    //ajout Gabrielle
     public void printIventory(){
         System.out.println("There are " + this.items.size() + " items.");
         for(Item n : this.items){
-            System.out.println(n);
+            System.out.println(n.name + " : " + n.description);
         }
     }
 
-    public Boolean isItemInList(Item item){
+    public boolean isItemInList(Item item){
         return this.items.contains(item);
+    }
+    
+    public boolean hasKeyInInventory(){
+        for (Item item : items) {
+            if (item.getName().equals("Key")) {
+                return true;
+            }
+        }
+        return false;
     }
     
     public Item findItemByName(String itemName) {

@@ -9,17 +9,16 @@ package main;
  * @author grand
  */
 public class Merchant extends Character {
+    private Inventory inventoryMerchant;
+
+    public Inventory getInventoryMarchant(){
+        return inventoryMerchant;
+    }
     
-    public Merchant(String name, String description, Inventory inventoryMerchant){
+    public Merchant(String name, String description, String dialogue, Inventory inventory){
         this.name = name;
         this.description = description;
-        setInventoryCharacter(inventoryMerchant);
-        setDialogue("I am " + this.name + " : " + this.description + ". You can buy item here.");
-    }
-
-    @Override
-    public String toString(){
-        String s = name + "\n" + description;
-        return s;
+        this.dialogue = dialogue;
+        this.inventoryMerchant = inventory;
     }
 }

@@ -25,12 +25,6 @@ public class Exit {
         this.isOpen = false;
     }
 
-    @Override
-    public String toString(){
-        String s = "The exit is open -> " + getIsOpen();
-        return s;
-    }
-
     public void open(){
         isOpen = true;
     }

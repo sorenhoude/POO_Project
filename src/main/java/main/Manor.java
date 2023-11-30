@@ -4,7 +4,7 @@
 
 package main;
 
-import inputs.UserInput;
+import commands.UserInput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,7 +18,9 @@ public class Manor {
     private List<Room> rooms;
     private Hero hero;
     
-    public Manor(){
+    public Manor(String name){
+        
+        this.hero = new Hero(name);
         
         this.rooms = new ArrayList<>();
         
@@ -93,27 +95,5 @@ public class Manor {
             }
         }
         return null; // Retourne null si la chambre n'est pas trouvée
-    }
-    
-    
-    
-    
-    
-    
-
-    public static void main(String[] args) {
-        //System.out.println("Hello World!");
-       // Game game = new Game();
-       
-       System.out.println("Enter a command ");
-       String input, output;
-       UserInput userInput = new UserInput();
-       do{
-            Scanner sc = new Scanner(System.in);
-            input = sc.nextLine();
-            userInput.runCommand(input);
-        } while (!"quit".equals(input));
-       
-       System.out.println("THE END");
     }
 }

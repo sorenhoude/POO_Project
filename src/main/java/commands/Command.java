@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package inputs;
+package commands;
 
 import main.Manor;
 
@@ -23,7 +23,6 @@ public class Command {
     ReadAction read = new ReadAction();
     TalkAction talk = new TalkAction();
     SleepAction sleep = new SleepAction();
-    SaveAction save = new SaveAction();
     DropAction drop = new DropAction();
     
     public void doCommand(Manor manor, String verb, String noun1, String noun2){
@@ -73,8 +72,6 @@ public class Command {
             case "sleep":
                 sleep.doAction(manor);
                 break;
-            case "save":
-                save.doAction();
             case "drop":
                 drop.doAction(manor, noun1);
                 break;

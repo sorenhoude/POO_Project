@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package inputs;
+package commands;
 
 import main.GoldCoin;
 import main.Hero;
@@ -17,7 +17,7 @@ import main.Room;
  */
 public class TakeAction implements Action{
 
-     @Override
+    @Override
     public void doAction(Manor manor, String noun){
         Hero hero = manor.getHero();
         int numRoom = hero.getRoomNumber();

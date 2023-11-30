@@ -10,16 +10,26 @@ package main;
  */
 public class Friendly extends Character {
     
-    public Friendly(String name, String description, Inventory inventory){
+    //private boolean hasCode;
+    //private boolean hasGivenCode;
+    
+    public Friendly(String name, String description, String dialogue){
         this.name = name;
         this.description = description;
-        //setInventory(inventory);
-        setDialogue("I am " + this.name + " : " + this.description + ". I am here to help you.");
+        this.dialogue = dialogue;
+        //this.hasCode = hasCode;
+        //this.hasGivenCode = false;
     }
-
-    @Override
-    public String toString(){
-        String s = name + "\n" + description;
-        return s;
+    /*
+    public void setHasGivenCode(){
+        this.hasGivenCode = true;
     }
+    
+    public boolean getHasGivenCode(){
+        return this.hasGivenCode;
+    }
+    
+    public boolean getHasCode(){
+        return this.hasCode;
+    }*/
 }

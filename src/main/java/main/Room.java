@@ -18,7 +18,7 @@ public class Room extends Thing {
     private Map<String, Exit> exits;
     private List<Character> charactersRoom;
     private Inventory inventoryRoom;
-    private static final int INVENTORY_MAW_WEIGHT = 5;
+    private static final int INVENTORY_MAX_WEIGHT = 200;
     
     public int getNumberRoom(){
         return this.numberRoom;
@@ -59,7 +59,7 @@ public class Room extends Thing {
         this.numberRoom = numberRoom;
         this.exits = new HashMap<>();
         this.charactersRoom = new ArrayList<>();
-        this.inventoryRoom = new Inventory(INVENTORY_MAW_WEIGHT);
+        this.inventoryRoom = new Inventory(INVENTORY_MAX_WEIGHT);
     }
 
     public void printListcharactersRoom(){
@@ -77,5 +77,33 @@ public class Room extends Thing {
 
     public void addCharacter(int i, Friendly character){
         charactersRoom.add(i, character);
+    }
+    
+    public boolean hasAnExit(String nameRoom){
+        boolean res = false;
+        for(int i = 0; i < exits.size(); i++){
+            if(exits.containsKey(nameRoom)){
+                res = true;
+            }
+        }
+        return res;
+    }
+    
+    public Exit getExitByName(String nameNextRoom){
+        Exit exit = null;
+        for(int i = 0; i < exits.size(); i++){
+            if(exits.containsKey(nameNextRoom)){
+                exit = exits.get(nameNextRoom);
+            }
+        }
+        return exit;
+    }
+
+    public void setExits(String nameRoom, Exit exit){
+        this.exits.put(nameRoom, exit);
+    }
+
+    public void setCharacterRoom(Character character){
+        charactersRoom.add(character);
     }
 }
