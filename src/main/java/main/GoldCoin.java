@@ -14,7 +14,7 @@ public class GoldCoin extends Item {
     
     public GoldCoin(int nbCoins){
         this.weight = 1;
-        this.name = "Gold coin";
+        this.name = "Goldcoin";
         this.description = "Having gold is always a pleasure.";
         this.objectType = OBJECT_TYPE;
         this.nbCoins = nbCoins;

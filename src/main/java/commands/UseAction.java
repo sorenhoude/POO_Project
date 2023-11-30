@@ -29,7 +29,8 @@ public class UseAction implements Action{
                 if(object instanceof HealingPotion){
                     System.out.println("The potion has been used.");
                     hero.isHealed();
-                    heroInventory.removeItem(object);
+                    //heroInventory.removeItem(object);
+                    hero.takeItemOutOfBag(object);
                 } else{
                     System.out.println("The potion has been used.");
                     hero.isHealed();
@@ -44,6 +45,21 @@ public class UseAction implements Action{
     }
     
     public void doAction(Manor manor, String noun1, String noun2){
-        
+        //permet juste de recharger une arme
+        Hero hero = manor.getHero();
+        Inventory heroInventory = hero.getInventory();
+        Item weapon = heroInventory.findItemByName(noun1);
+        Item recharge = heroInventory.findItemByName(noun2);
+        if(weapon != null && recharge != null){
+            if(weapon instanceof Weapon && recharge instanceof Recharge)
+            {
+                ((Weapon) weapon).reload();
+                heroInventory.removeItem(recharge);
+            }else{
+                System.out.println("You can't do that.");
+            }
+        }else{
+            System.out.println("You can't use items that aren't in your inventory.");
+        }
     }
 }

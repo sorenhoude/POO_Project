@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -18,35 +19,36 @@ public class Room extends Thing {
     private Map<String, Exit> exits;
     private List<Character> charactersRoom;
     private Inventory inventoryRoom;
-    private static final int INVENTORY_MAX_WEIGHT = 200;
+    private static final int INVENTORY_MAX_WEIGHT = 500;
     
     public int getNumberRoom(){
         return this.numberRoom;
     }
-
     public Map<String, Exit> getExits(){
         return exits;
     }
-
+    public Exit getExitByNameRoom(String nameNextRoom){
+        Exit exit = null;
+        for(int i = 0; i < exits.size(); i++){
+            if(exits.containsKey(nameNextRoom)){
+                exit = exits.get(nameNextRoom);
+            }
+        }
+        return exit;
+    }
     public List<Character> getCharactersRoom(){
         return charactersRoom;
     }
-    
     public Inventory getInventoryRoom(){
         return inventoryRoom;
     }
-    
-    public Character findCharacterByName(String characterName){
-        for (Character character : charactersRoom) {
-            if (character.getName().equals(characterName)) {
-                return character; // Character found
-            }
-        }
-        return null; // Character not found
-    } 
 
-    public void setCharacterRoom(int i, Character character){
-        charactersRoom.add(i, character);
+    public void setExits(String nameRoom, Exit exit){
+        this.exits.put(nameRoom, exit);
+    }
+
+    public void setCharacterRoom(Character character){
+        charactersRoom.add(character);
     }
 
     public void setInventoryRoom(Item item){
@@ -61,24 +63,45 @@ public class Room extends Thing {
         this.charactersRoom = new ArrayList<>();
         this.inventoryRoom = new Inventory(INVENTORY_MAX_WEIGHT);
     }
-
-    public void printListcharactersRoom(){
-        System.out.println("There are " + charactersRoom.size() + " chraracter(s) in this room.");
-        for(Character n : this.charactersRoom){
-            System.out.println(n);
+    
+    public void printExits(){
+        System.out.println("You have " + exits.size() + " possible exit(s).");
+        Set<String> nextRooms = exits.keySet();
+        for(String nextRoom : nextRooms){
+            System.out.println("- to the " +nextRoom);
         }
     }
 
-    @Override
-    public String toString(){
-        String s = "You're in " +  name + ".\n" + description; 
-        return s;
+    public void printCharactersRoom(){
+        if(charactersRoom.isEmpty()){
+            System.out.println("There are no characters in this room.");
+        }
+        else{
+            System.out.println("There is/are " + charactersRoom.size() + " chraracter(s) in this room.");
+            for(Character c : this.charactersRoom){
+                System.out.println("-" + c.name);
+            }      
+        }
     }
 
-    public void addCharacter(int i, Friendly character){
-        charactersRoom.add(i, character);
+    public void printItemsRoom(){
+        if(inventoryRoom.getItems().isEmpty()){
+            System.out.println("There are no items here.");
+        }
+        else{
+            inventoryRoom.printIventory();
+        }
     }
-    
+
+    public Character findCharacterByName(String characterName){
+        for (Character character : charactersRoom) {
+            if (character.getName().equals(characterName)) {
+                return character; // Character found
+            }
+        }
+        return null; // Character not found
+    }
+
     public boolean hasAnExit(String nameRoom){
         boolean res = false;
         for(int i = 0; i < exits.size(); i++){
@@ -88,22 +111,14 @@ public class Room extends Thing {
         }
         return res;
     }
-    
-    public Exit getExitByName(String nameNextRoom){
-        Exit exit = null;
-        for(int i = 0; i < exits.size(); i++){
-            if(exits.containsKey(nameNextRoom)){
-                exit = exits.get(nameNextRoom);
+
+    public boolean hasHostile(){
+        boolean res = false;
+        for(int i = 0; i < charactersRoom.size(); i++){
+            if(charactersRoom.get(i) instanceof Hostile ){
+                res = true;
             }
         }
-        return exit;
-    }
-
-    public void setExits(String nameRoom, Exit exit){
-        this.exits.put(nameRoom, exit);
-    }
-
-    public void setCharacterRoom(Character character){
-        charactersRoom.add(character);
+        return res;
     }
 }

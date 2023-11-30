@@ -10,6 +10,7 @@ import main.Item;
 import main.MagicalChest;
 import static main.MagicalChest.getTheMagicalChest;
 import main.Manor;
+import main.Weapon;
 
 /**
  *
@@ -24,6 +25,9 @@ public class DropAction implements Action{
         Inventory heroInventory = hero.getInventory();
         Item object = heroInventory.findItemByName(noun);
         if(object != null){
+            if(hero.isWeaponInHand((Weapon) object)){
+                hero.putWeaponInHandInInventory();
+            }
              hero.takeItemOutOfBag(object);
              //mettre l'item dans le coffre magique
              MagicalChest magicalChest = getTheMagicalChest();

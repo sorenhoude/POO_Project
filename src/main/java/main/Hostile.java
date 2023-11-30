@@ -32,6 +32,6 @@ public class Hostile extends Character{
     }
     
     public boolean isAlive(){
-        return hpHostile > 0;
+        return hpHostile >= 0;
     }
 }

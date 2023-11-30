@@ -15,7 +15,7 @@ public class Key extends Item {
 
     public Key(){
         this.name = "Key";
-        this.description = null;
+        this.description = "It opens a door.";
         this.weight = KEY_WEIGHT;
         this.objectType = OBJECT_TYPE;
         this.price = PRICE;

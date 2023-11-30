@@ -18,7 +18,6 @@ public class LookAction implements Action{
     
     @Override
     public void doAction(Manor manor, String noun){
-        //System.out.println("ACTION = LOOK IS WORKING");
         Hero hero = manor.getHero();
         int numRoom = hero.getRoomNumber();
         Room currentRoom = manor.findRoomByNumber(numRoom);

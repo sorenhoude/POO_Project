@@ -4,7 +4,13 @@
  */
 package commands;
 
+import main.Exit;
+import main.ExitWithCode;
+import main.ExitWithKey;
+import main.FinalExit;
 import main.Hero;
+import main.Inventory;
+import main.Key;
 import main.Manor;
 import main.Room;
 

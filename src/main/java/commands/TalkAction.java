@@ -25,9 +25,6 @@ public class TalkAction implements Action{
         Room currentRoom = manor.findRoomByNumber(numRoom);
         Character character = currentRoom.findCharacterByName(noun);
         if(character != null){
-            /*if(character instanceof Friendly && ((Friendly) character).getHasCode()){
-                ((Friendly) character).setHasGivenCode();
-            }*/
             String s = character.getDialogue();
             System.out.println(s);
         } else{

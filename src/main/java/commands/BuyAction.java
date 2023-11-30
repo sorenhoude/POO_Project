@@ -23,7 +23,7 @@ public class BuyAction implements Action{
         Hero hero = manor.getHero();
         int numRoom = hero.getRoomNumber();
         Room currentRoom = manor.findRoomByNumber(numRoom);
-         Character character = currentRoom.findCharacterByName("Rich Business-man");
+         Character character = currentRoom.findCharacterByName("Rich_Business_man");
         if(character != null){
             Inventory merchantInventory = ((Merchant) character).getInventoryMarchant();
             Item item = merchantInventory.findItemByName(noun);

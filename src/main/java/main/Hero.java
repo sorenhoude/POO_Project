@@ -48,34 +48,23 @@ public class Hero extends Thing {
         // Implement the logic to add the item to the inventory
         this.inventory.removeItem(item);
     }
-
-    public void takeDamage(int damage){   //est ce utile?
-        if (this.hp > damage){
-            this.hp -= damage;
-        } else {
-            System.out.println("You died.");
-        }
-
+    
+    public boolean isWeaponInHand(Weapon weapon){
+        return this.weaponInHand == weapon;
     }
 
-    public void putWeaponInHand(Weapon weapon){
+    public void putWeaponInHandInInventory(){
+        if (!handEmpty()){
+            this.weaponInHand = null;
+        }
+    }
+    public void putWeaponFromBagToHand(Weapon weapon){
         if (handEmpty()){
             this.weaponInHand = weapon;
             updateDamage();
         }else {
             System.out.println("You already have an item in hand.");
         }
-    }
-    public void putWeaponInHandInInventory(){
-        if (!handEmpty()){
-            inventory.addItem(weaponInHand);
-            this.weaponInHand = null;
-        }
-    }
-    public void putWeaponFromBagToHand(Weapon weapon){
-            putWeaponInHand(weapon);
-            inventory.removeItem(weapon);   // pourquoi?
-            updateDamage();
     }
     public void updateDamage(){
         if (!handEmpty()){
@@ -101,7 +90,7 @@ public class Hero extends Thing {
     }
     
     public boolean isAlive(){
-        return hp > 0;
+        return hp >= 0;
     }
     
     

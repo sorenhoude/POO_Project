@@ -11,7 +11,7 @@ package main;
 public class Weapon extends Item {
     protected int damage;
     protected int ammo;
-    protected final int AMMO_MAX = 1;
+    protected final int AMMO_MAX = 3;
     protected final static int OBJECT_TYPE = 1;
     
     public Weapon(int damage, int weight, String name, String description){
@@ -39,13 +39,12 @@ public class Weapon extends Item {
     }
     public Boolean shoot(){
         if (this.ammo>0){
-             this.ammo=-1;
+            this.ammo=-1;
             return true;
+        } else{
+            System.out.println("No more ammo, reload to shoot."); 
+            return false;
         }
-            else{
-                System.out.println("No more ammo, reload to shoot."); 
-                return false;
-            }
     }
 }
 

@@ -24,17 +24,13 @@ public class UserInput {
             "attack", "buy", "read", "talk", "sleep", "drop"));
     
      List<String> objects = new ArrayList<>(Arrays.asList(
-            "sword", "mirror"));
-     
-     List<String> secondObject = new ArrayList<>(Arrays.asList(
-            "arrow"));
-    
-    
-    public String getName(){
-        Scanner input = new Scanner(System.in);
-        String name = input.next();
-        return "Hello" + name + "!";
-    }
+            "Kitchen", "Pantry", "Basement", "Bathroom", "Attic", "Library", "Bedroom", "Office", "Garage",
+             "Corridor_first_floor", "Main_corridor", "Living_room", "Dining_room", "Fluorescent_Ghost", 
+             "Old_Bear", "Shrek", "Your_Old_Friend_Samuel", "Tooth_Fairy", "Rich_Business_Man", "Dragon", 
+             "Small_Goblin", "Bob_the_Zombie", "Angry_Santa", "Sparkling_Devil", "Strength_Potion", "Healing_Potion", 
+             "Bow", "Gun", "Clue1", "Clue2", "Clue3", "Clue4", "Clue5", "Clue6", "Clue7", "Clue8", "Goldcoin",
+              "Key", "Magical_Chest", "Sword", "Mace", "Dagger", "Flower", "Mirror", "Apple", "Bracelet", "Ring",
+               "Cool_Hat"));
 
     public void parseCommand(List <String> wordlist, Manor manor){
         String verb = wordlist.get(0);
@@ -56,7 +52,7 @@ public class UserInput {
             return;
         }
         
-        if(wordlist.size() > 2 && !secondObject.contains(noun2)){
+        if(wordlist.size() > 2 && !objects.contains(noun2)){
             System.out.println(noun2 + " isn't a known noun!");
             return;
         }

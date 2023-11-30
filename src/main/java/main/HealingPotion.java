@@ -12,13 +12,13 @@ public class HealingPotion extends Potion {
     
     public HealingPotion() {
         super();
-        this.name = "Healing Potion";
+        this.name = "Healing_Potion";
         this.description = "Heals the user completely.";
     }
     
     public HealingPotion(int price) {
         super();
-        this.name = "Healing Potion";
+        this.name = "Healing_Potion";
         this.description = "Heals the user completely.";
         this.price = price;
     }

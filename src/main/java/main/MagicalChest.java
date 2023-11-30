@@ -11,12 +11,12 @@ package main;
 public class MagicalChest extends Item{
     private final int CHEST_WEIGHT = 100;
     private Inventory inventory;
-    private static final MagicalChest THE_MAGICAL_CHEST = new MagicalChest();
+    private static MagicalChest THE_MAGICAL_CHEST = new MagicalChest();
 
-    public MagicalChest() {
+    private MagicalChest() {
         super();
         this.weight = CHEST_WEIGHT;
-        this.name = "Magical Chest";
+        this.name = "Magical_Chest";
         this.description = "You notice in front of you a shiny chest. It is so large, it should be able to contain pretty much anything you want..";
         this.inventory = new Inventory(500);
     }

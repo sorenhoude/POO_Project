@@ -29,7 +29,6 @@ public class Command {
         switch(verb){
             case "go":
                 go.doAction(manor, noun1);
-                //go_cmd(noun1);
                 break;
             case "help":
                 help.doAction();
@@ -48,7 +47,11 @@ public class Command {
                 look.doAction(manor, noun1);
                 break;
             case "take":
-                take.doAction(manor, noun1);
+                if(!noun2.equals("")){
+                    take.doAction(manor, noun1, noun2);
+                } else{
+                    take.doAction(manor, noun1);
+                }
                 break;
             case "use":
                 if(!noun2.equals("")){
