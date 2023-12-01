@@ -35,18 +35,6 @@ public class ExitWithCode extends Exit {
     }
 
     /**
-     * Method to retrieve the code entered by user
-     * @return The code entered
-     */
-    public int getCode(){
-        System.out.println("Enter door code : ");
-        Scanner s = new Scanner(System.in);
-        int input = s.nextInt();
-        s.close();
-        return input;
-    }
-
-    /**
      * Method to unlock an exit
      * @param code : The exit code
      */

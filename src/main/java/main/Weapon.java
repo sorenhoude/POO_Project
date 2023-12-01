@@ -14,6 +14,10 @@ public class Weapon extends Item {
     protected final int AMMO_MAX = 3;
     protected final static int OBJECT_TYPE = 1;
     
+    public int getAmmo(){
+        return this.ammo;
+    }
+    
     public Weapon(int damage, int weight, String name, String description){
         this.ammo = AMMO_MAX;
         this.objectType = OBJECT_TYPE;

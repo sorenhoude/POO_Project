@@ -7,7 +7,6 @@ package commands;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 import main.Manor;
 
@@ -30,7 +29,7 @@ public class UserInput {
              "Small_Goblin", "Bob_the_Zombie", "Angry_Santa", "Sparkling_Devil", "Strength_Potion", "Healing_Potion", 
              "Bow", "Gun", "Clue1", "Clue2", "Clue3", "Clue4", "Clue5", "Clue6", "Clue7", "Clue8", "Goldcoin",
               "Key", "Magical_Chest", "Sword", "Mace", "Dagger", "Flower", "Mirror", "Apple", "Bracelet", "Ring",
-               "Cool_Hat"));
+               "Cool_Hat", "141", "113", "TREASURE"));
 
     public void parseCommand(List <String> wordlist, Manor manor){
         String verb = wordlist.get(0);
@@ -58,10 +57,12 @@ public class UserInput {
         }
         
         c.doCommand(manor, verb, noun1, noun2);
+       // System.out.println("verbe : " + verb);
+        //System.out.println("noun1 : " + noun1);
+       // System.out.println("noun2 : " + noun2);
         
     }
     
-    //retourne une liste des mots que l'utilisateur a tapé
     public List<String> wordList(String input){
         String delims = " \t,.:;?!\"'";
         List<String> strlist = new ArrayList<>();
@@ -76,11 +77,11 @@ public class UserInput {
     
     public void runCommand(String input, Manor manor){
         List<String> wordlist;
-        String lowstr = input.trim().toLowerCase();
-        if(lowstr.equals("")){
+        String s = input.trim();
+        if(s.equals("")){
             System.out.println("You must return a command!");
         } else{
-            wordlist = wordList(lowstr);
+            wordlist = wordList(s);
             parseCommand(wordlist, manor);
         }
     }

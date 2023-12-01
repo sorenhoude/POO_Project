@@ -35,7 +35,7 @@ public class Inventory {
     public void printIventory(){
         System.out.println("There are " + this.items.size() + " items.");
         for(Item n : this.items){
-            System.out.println(n.name + " : " + n.description);
+            System.out.println(n.name);
         }
     }
 

@@ -68,7 +68,7 @@ public class Room extends Thing {
         System.out.println("You have " + exits.size() + " possible exit(s).");
         Set<String> nextRooms = exits.keySet();
         for(String nextRoom : nextRooms){
-            System.out.println("- to the " +nextRoom);
+            System.out.println("- " +nextRoom);
         }
     }
 
@@ -77,9 +77,9 @@ public class Room extends Thing {
             System.out.println("There are no characters in this room.");
         }
         else{
-            System.out.println("There is/are " + charactersRoom.size() + " chraracter(s) in this room.");
+            System.out.println("There is/are " + charactersRoom.size() + " character(s) in this room.");
             for(Character c : this.charactersRoom){
-                System.out.println("-" + c.name);
+                System.out.println("- " + c.name);
             }      
         }
     }

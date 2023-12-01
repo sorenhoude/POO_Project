@@ -9,6 +9,7 @@ import main.Inventory;
 import main.Item;
 import main.Manor;
 import main.Room;
+import main.Character;
 
 /**
  *
@@ -18,13 +19,18 @@ public class LookAction implements Action{
     
     @Override
     public void doAction(Manor manor, String noun){
+        String s;
         Hero hero = manor.getHero();
         int numRoom = hero.getRoomNumber();
         Room currentRoom = manor.findRoomByNumber(numRoom);
         Inventory inventoryRoom = currentRoom.getInventoryRoom();
         Item item = inventoryRoom.findItemByName(noun);
+        Character character= currentRoom.findCharacterByName(noun);
         if(item != null){
-            String s = item.getDescription();
+            s = item.getDescription();
+            System.out.println(s);
+        } else if (character!= null){
+            s= character.getDescription();
             System.out.println(s);
         } else{
             System.out.println(noun + " isn't in the room..");

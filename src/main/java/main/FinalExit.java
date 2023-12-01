@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Scanner;
-
 /**
  *  This is a class to define exits with an unlock keyword 
  * @author Gabrielle
@@ -19,18 +17,6 @@ public class FinalExit extends ExitWithKey {
      */
     public FinalExit(int number){
         super(number);
-    }
-    
-    /**
-     * Method to retrieve the keyword entered by user
-     * @return The keyword entered
-     */
-    public String getWord(){
-        System.out.println("Enter the keyword to unlock the door : ");
-        Scanner s = new Scanner(System.in);
-        String input = s.nextLine();
-        s.close();
-        return input;
     }
 
     /**

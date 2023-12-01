@@ -20,20 +20,21 @@ public class DropAction implements Action{
 
     @Override
     public void doAction(Manor manor, String noun){
-        //System.out.println("ACTION = DROP IS WORKING");
         Hero hero = manor.getHero();
         Inventory heroInventory = hero.getInventory();
         Item object = heroInventory.findItemByName(noun);
         if(object != null){
-            if(hero.isWeaponInHand((Weapon) object)){
-                hero.putWeaponInHandInInventory();
+            if(object instanceof Weapon){
+                if(hero.isWeaponInHand((Weapon) object)){
+                    hero.putWeaponInHandInInventory();
+                }
             }
              hero.takeItemOutOfBag(object);
              //mettre l'item dans le coffre magique
              MagicalChest magicalChest = getTheMagicalChest();
              Inventory chestInventory = magicalChest.getInventory();
              chestInventory.addItem(object);
-             System.out.println(noun + "has been dropped!");
+             System.out.println(noun + " has been dropped!");
         } else {
             System.out.println(noun + " wasn't in your inventory...");
         }

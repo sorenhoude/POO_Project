@@ -24,6 +24,7 @@ public class Command {
     TalkAction talk = new TalkAction();
     SleepAction sleep = new SleepAction();
     DropAction drop = new DropAction();
+    UnlockAction unlock = new UnlockAction();
     
     public void doCommand(Manor manor, String verb, String noun1, String noun2){
         switch(verb){
@@ -38,13 +39,12 @@ public class Command {
                 break;
             case "look":
                 if(!noun2.equals("")){
-                    look.doAction(manor, noun1);
-                } else if(!noun2.equals("") && !noun1.equals("")){
+                    look.doAction(manor, noun1, noun2);
+                } else if(noun1.equals("")){
                     look.doAction(manor);
                 } else{
-                    look.doAction(manor, noun1, noun2);
+                    look.doAction(manor, noun1);
                 }
-                look.doAction(manor, noun1);
                 break;
             case "take":
                 if(!noun2.equals("")){
@@ -77,6 +77,9 @@ public class Command {
                 break;
             case "drop":
                 drop.doAction(manor, noun1);
+                break;
+            case "unlock":
+                unlock.doAction(manor, noun1, noun2);
                 break;
         }
     }

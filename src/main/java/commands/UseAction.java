@@ -10,6 +10,7 @@ import main.Inventory;
 import main.Item;
 import main.Manor;
 import main.Weapon;
+import main.Recharge;
 
 /**
  *
@@ -45,7 +46,6 @@ public class UseAction implements Action{
     }
     
     public void doAction(Manor manor, String noun1, String noun2){
-        //permet juste de recharger une arme
         Hero hero = manor.getHero();
         Inventory heroInventory = hero.getInventory();
         Item weapon = heroInventory.findItemByName(noun1);

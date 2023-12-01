@@ -6,8 +6,6 @@ package commands;
 
 import main.Hero;
 import main.Character;
-import main.Friendly;
-import main.Hostile;
 import main.Manor;
 import main.Room;
 

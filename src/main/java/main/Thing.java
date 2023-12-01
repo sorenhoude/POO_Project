@@ -10,8 +10,8 @@ package main;
  */
 public abstract class Thing {
     
-    public String name;
-    public String description;
+    protected String name;
+    protected String description;
     
     public String getName(){
         return this.name;

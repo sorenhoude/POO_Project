@@ -26,6 +26,14 @@ public class Hero extends Thing {
         this.inventory = new Inventory(30);
         this.goldCount = 0;
     }
+    
+    public int getHp(){
+        return this.hp;
+    }
+    
+    public int getGoldCount(){
+        return this.goldCount;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -37,7 +45,7 @@ public class Hero extends Thing {
     
     //ajout Gabrielle
     public void setInventoryHero(Item item){
-        inventory.addItem(item);
+        this.inventory.addItem(item);
     }
     
     public boolean handEmpty(){
@@ -71,17 +79,29 @@ public class Hero extends Thing {
             this.damage = this.weaponInHand.damage;
         }
     }
+    
+    public Weapon getWeaponInHand(){
+        return this.weaponInHand;
+    }
 
     public void attack(Hostile badguy){
-        while(this.isAlive() || badguy.isAlive()){
-            badguy.setHpHostile(badguy.getHpHostile() - this.damage);
-            this.hp -= badguy.getDamageHostile();                    //pb : les hp peuvent descendre en dessous de 0
-        }
-        if(this.isAlive()){
-            System.out.println("You have slained your enemies.");
+        Weapon heroWeapon = getWeaponInHand();
+        if(heroWeapon == null){
+            System.out.println("You should *use* a weapon before attempting to fight someone..");
         } else{
-            System.out.println("You've perished. GAME OVER");
-            System.exit(0);
+            while(this.isAlive() || badguy.isAlive()){
+                if (heroWeapon.shoot()){
+                badguy.setHpHostile(badguy.getHpHostile() - this.damage);
+                }
+                this.hp -= badguy.getDamageHostile();                    //pb : les hp peuvent descendre en dessous de 0
+            }
+            if(this.isAlive()){
+                System.out.println("You have slained your enemies.");
+            } else{
+                System.out.println("You've perished. GAME OVER");
+                System.exit(0);
+            }
+            
         }
     }
    
@@ -124,7 +144,7 @@ public class Hero extends Thing {
             System.out.println("It looks like you can't afford that.");
         }else{
             this.goldCount -= price;
-            this.inventory.addItem(item);
+            setInventoryHero(item);
             return true;
         }
         return false;

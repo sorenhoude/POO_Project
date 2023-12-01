@@ -1,18 +1,59 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
 package commands;
 
-import main.Manor;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author grand
  */
-public class HelpAction implements Action{
+public class HelpActionTest {
+    
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    
+    public HelpActionTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+    
+    @After
+    public void tearDown() {
+    }
 
-    public void doAction() {
+    /**
+     * Test of doAction method, of class HelpAction.
+     */
+    @Test
+    public void testDoAction() {
+        
+        //System.out.println("doAction");
+
+        HelpAction instance = new HelpAction();
+        instance.doAction();
+        System.setOut(System.out);
+
         String s = ("Here is the list of all the commands you can use: \n" +
                 "attack *enemy* : allows you to attack someone you encounter.\n" +
                 "buy *item* : allows you to purchase the item of your choice from a merchant.\n" +
@@ -28,13 +69,7 @@ public class HelpAction implements Action{
                 "talk *character* : allows you to engage in a conversation with a character.\n" +
                 "use *item* : allows you to take an item from a room and put it in your inventory.\n" +
                 "use *item1* *item2* : allows you to recharge a weapon.\n" +
-                "unlock *room* *code* : allows you to unlock the door taking you to the next room.\n");
-        System.out.println(s);
+                "unlock *room* *code* : allows you to unlock the door taking you to the next room.");
+        assertEquals(s, outputStreamCaptor.toString().trim());
     }
-
-    @Override
-    public void doAction(Manor manor, String noun) {
-        
-    }
-    
 }
